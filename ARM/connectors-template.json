@@ -15,7 +15,6 @@
             "type": "string"
         },
         "sa_name": {
-            "defaultValue": "storage name",
             "type": "string"
         }, 
         "connections_azureblob_name": {
@@ -30,7 +29,7 @@
         {
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2020-08-01-preview",
-            "name": "[variables('sa')]",
+            "name": "[parameters('sa_name')]",
             "location": "[parameters('location')]",
             "sku": {
                 "name": "Standard_LRS",
@@ -63,9 +62,9 @@
         {
             "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
             "apiVersion": "2018-02-01",
-            "name": "[concat(variables('sa'), '/default/blobs')]",
+            "name": "[concat(parameters('sa_name'), '/default/blobs')]",
             "dependsOn": [
-                "[resourceId('Microsoft.Storage/storageAccounts', variables('sa'))]"
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('sa_name'))]"
             ],
             "properties": {
                 "defaultEncryptionScope": "$account-encryption-key",
@@ -80,13 +79,13 @@
             "location": "[parameters('location')]",
             "kind": "V2",            
             "dependsOn": [
-                "[resourceId('Microsoft.Storage/storageAccounts', variables('sa'))]"
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('sa_name'))]"
             ],
             "properties": {
                 "displayName": "privatestorage",
                 "parameterValues": {
-                    "accountName": "[variables('sa')]", 
-                    "accessKey": "[concat(listKeys(concat(resourceGroup().id,'/providers/Microsoft.Storage/storageAccounts/', variables('sa')),'2019-06-01').keys[0].value)]"
+                    "accountName": "[parameters('sa_name')]", 
+                    "accessKey": "[concat(listKeys(concat(resourceGroup().id,'/providers/Microsoft.Storage/storageAccounts/', parameters('sa_name')),'2019-06-01').keys[0].value)]"
                 },
                 "api": {
                     "id": "[concat('/subscriptions/',subscription().subscriptionId,'/providers/Microsoft.Web/locations/',parameters('location'),'/managedApis/azureblob')]"
