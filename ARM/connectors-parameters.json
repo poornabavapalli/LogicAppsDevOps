@@ -12,10 +12,10 @@
             "value": "__2__"
         },
         "sa_name": {
-            "value": "salogicappstandardgh2"
+            "value": "sa"
         },
         "connections_azureblob_name": {
-            "value":"azureblobgh"
+            "value":"azureblob"
         }
     }
 }
