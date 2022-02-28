@@ -3,37 +3,29 @@
         "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
         "actions": {
             "Invoke_a_workflow_in_this_workflow_app": {
-                "type": "Workflow",
                 "inputs": {
+                    "body": "demo content",
                     "host": {
                         "workflow": {
                             "id": "eventprocessor"
                         }
-                    },
-                    "body": "demo content"
-                },
-                "runAfter": {}
-            }
-        },
-        "triggers": {
-            "When_messages_are_available_in_a_queue": {
-                "type": "ServiceProvider",
-                "inputs": {
-                    "parameters": {
-                        "queueName": "neworders",
-                        "isSessionsEnabled": false
-                    },
-                    "serviceProviderConfiguration": {
-                        "connectionName": "serviceBus-2",
-                        "operationId": "receiveQueueMessages",
-                        "serviceProviderId": "/serviceProviders/serviceBus"
                     }
                 },
-                "splitOn": "@triggerOutputs()?['body']"
+                "runAfter": {},
+                "type": "Workflow"
             }
         },
         "contentVersion": "1.0.0.0",
-        "outputs": {}
+        "outputs": {},
+        "triggers": {
+            "Recurrence": {
+                "recurrence": {
+                    "frequency": "Day",
+                    "interval": 1
+                },
+                "type": "Recurrence"
+            }
+        }
     },
     "kind": "Stateful"
 }
