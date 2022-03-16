@@ -5,7 +5,6 @@ name: (classic) Build and Deploy Logic App.
 
 env:
   LA_NAME: 'la-weu-logicappstandard'
-  LA_NAME_prod: 'la-weu-logicappstandard-prod'
 
 on:
   workflow_dispatch:
