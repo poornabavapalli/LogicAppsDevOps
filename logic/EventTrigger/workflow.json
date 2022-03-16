@@ -3,29 +3,53 @@
         "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
         "actions": {
             "Invoke_a_workflow_in_this_workflow_app": {
+                "type": "Workflow",
                 "inputs": {
-                    "body": "demo content",
                     "host": {
                         "workflow": {
                             "id": "eventprocessor"
                         }
+                    },
+                    "body": "demo content"
+                },
+                "runAfter": {
+                    "Lists_blobs_(V2)": [
+                        "Succeeded"
+                    ]
+                }
+            },
+            "Lists_blobs_(V2)": {
+                "type": "ApiConnection",
+                "inputs": {
+                    "host": {
+                        "connection": {
+                            "referenceName": "azureblob_1"
+                        }
+                    },
+                    "method": "get",
+                    "path": "/v2/datasets/@{encodeURIComponent(encodeURIComponent('AccountNameFromSettings'))}/foldersV2/@{encodeURIComponent(encodeURIComponent('JTJmYmxvYnMlMmZuZXdjaGFuZ2UlMmY='))}",
+                    "queries": {
+                        "nextPageMarker": ",",
+                        "useFlatListing": true
                     }
                 },
                 "runAfter": {},
-                "type": "Workflow"
+                "metadata": {
+                    "JTJmYmxvYnMlMmZuZXdjaGFuZ2UlMmY=": "/blobs/newchange/"
+                }
             }
         },
-        "contentVersion": "1.0.0.0",
-        "outputs": {},
         "triggers": {
             "Recurrence": {
+                "type": "Recurrence",
                 "recurrence": {
                     "frequency": "Day",
                     "interval": 1
-                },
-                "type": "Recurrence"
+                }
             }
-        }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {}
     },
     "kind": "Stateful"
 }
