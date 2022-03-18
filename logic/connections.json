@@ -2,12 +2,12 @@
   "managedApiConnections": {
     "azureblob": {
       "api": {
-        "id": "/subscriptions/@appsetting('WORKFLOWS_SUBSCRIPTION_ID')/providers/Microsoft.Web/locations/@appsetting('WORKFLOWS_LOCATION_NAME')/managedApis/azureblob"
+        "id": "/subscriptions/215fb1ed-c234-405d-a7fd-9c3ac07741e2/providers/Microsoft.Web/locations/westeurope/managedApis/azureblob"
       },
       "connection": {
-        "id": "/subscriptions/@appsetting('WORKFLOWS_SUBSCRIPTION_ID')/resourceGroups/@appsetting('WORKFLOWS_RESOURCE_GROUP_NAME')/providers/Microsoft.Web/connections/azureblob"
+        "id": "/subscriptions/215fb1ed-c234-405d-a7fd-9c3ac07741e2/resourceGroups/rg-weu-logicappstandard-con/providers/Microsoft.Web/connections/azureblob"
       },
-      "connectionRuntimeUrl": "@appsetting('BLOB_CONNECTION_RUNTIMEURL')",
+      "connectionRuntimeUrl": "https://d4515835d2d4f196.01.common.logic-westeurope.azure-apihub.net/apim/azureblob/456f45c1f7b4463aa1e3f50b9426c15d",
       "authentication": "@parameters('blob_auth')"
     }
   },

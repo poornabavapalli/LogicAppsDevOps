@@ -12,31 +12,7 @@
                     },
                     "body": "demo content"
                 },
-                "runAfter": {
-                    "Lists_blobs_(V2)": [
-                        "Succeeded"
-                    ]
-                }
-            },
-            "Lists_blobs_(V2)": {
-                "type": "ApiConnection",
-                "inputs": {
-                    "host": {
-                        "connection": {
-                            "referenceName": "azureblob_1"
-                        }
-                    },
-                    "method": "get",
-                    "path": "/v2/datasets/@{encodeURIComponent(encodeURIComponent('AccountNameFromSettings'))}/foldersV2/@{encodeURIComponent(encodeURIComponent('JTJmYmxvYnMlMmZuZXdjaGFuZ2UlMmY='))}",
-                    "queries": {
-                        "nextPageMarker": ",",
-                        "useFlatListing": true
-                    }
-                },
-                "runAfter": {},
-                "metadata": {
-                    "JTJmYmxvYnMlMmZuZXdjaGFuZ2UlMmY=": "/blobs/newchange/"
-                }
+                "runAfter": {}
             }
         },
         "triggers": {
