@@ -10,7 +10,7 @@
                             "id": "eventprocessor"
                         }
                     },
-                    "body": "demo"
+                    "body": "LA Standard Demo"
                 },
                 "runAfter": {}
             }
